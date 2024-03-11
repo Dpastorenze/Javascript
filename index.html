@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Información de Países</title>
+    <style>
+        /* Estilos CSS para la presentación */
+        #lista-paises {
+            list-style-type: none;
+            padding: 0;
+        }
+        #lista-paises li {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 <body>
-    <H1>Primer simulador </H1>
+    <h1>Información de Países</h1>
+    <form id="form-pais">
+        <label for="nombre">Nombre del País:</label>
+        <input type="text" id="nombre" required>
+        <label for="capital">Capital:</label>
+        <input type="text" id="capital" required>
+        <label for="poblacion">Población:</label>
+        <input type="text" id="poblacion" required>
+        <button type="submit">Agregar País</button>
+    </form>
+    <ul id="lista-paises">
+        <!-- Aquí se agregará la lista de países -->
+    </ul>
 </body>
 <script async src="js/scrypt.js"></script> <!-- async o defer atributos de script - defer funciona una vez que se haya cargado todo el codigo de pagina  -->
 </html>
