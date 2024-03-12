@@ -1,98 +1,50 @@
-// let array = [];
-// let arraypar=[];
-// confirm('se van a separar los numeros pares ingresados ')
-// let cantidad = Number(prompt('Ingrese la cantidad de números a ingresar'));
-// alert('la cantidad de numeros ingresados es '+cantidad);
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('pais-form');
+    const paislista = document.getElementById('paises-lista');
+  
+    // Cargar países almacenados al cargar la página
+    cargarpais();
+  
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const paisInput = document.getElementById('pais');
+      const capitalInput = document.getElementById('capital');
+      const poblacionInput = document.getElementById('poblacion');
+      
 
-// for (let i = 0; i < cantidad; i++) {
-
-// let numero = Number(prompt('Ingrese número'));
-
-// array.push(numero);
-
-// if(numero%2 ===0){
-//     let numpar=numero;
-//     console.log('el numero '+ numpar+ ' es par');
-//     arraypar.push(numpar);
-// }
-// }
-// console.log(array);
-// console.log(arraypar);
-
-// confirm('ahora separaremos en impares')
-// let cantidadimpar = Number(prompt('Ingrese la cantidad de números a ingresar'));
-// alert('la cantidad de numeros ingresados es '+cantidadimpar);
-// function impares(){
-    
-//     let arrayimpar=[];
-//     for (let i = 0; i < cantidadimpar; i++) {
-//         let numeroimpar=Number(prompt('ingresa numero'));
-        
-//         if(numeroimpar % 2 ===1){
-//             let numimpar=numeroimpar;
-//             console.log('el numero '+ numimpar+ ' es impar');
-//         arrayimpar.push(numimpar);
-//         }
-        
-// }
-// console.log(arrayimpar.sort());
-// }
-// impares();
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const formPais = document.getElementById('form-pais');
-    const listaPaises = document.getElementById('lista-paises');
-
-    // Cargar los países almacenados en Local Storage al cargar la página
-    cargarPaises();
-
-    formPais.addEventListener('submit', function(event) {
-        event.preventDefault(); // Evitar el envío del formulario
-
-        // Obtener valores del formulario
-        const nombre = document.getElementById('nombre').value;
-        const capital = document.getElementById('capital').value;
-        const poblacion = document.getElementById('poblacion').value;
-
-        // Crear un objeto para el nuevo país
-        const pais = {
-            nombre: nombre,
-            capital: capital,
-            poblacion: poblacion
-        };
-
-        // Guardar el nuevo país en Local Storage
-        guardarPais(pais);
-
-        // Limpiar el formulario
-        formPais.reset();
-
-        // Actualizar la lista de países
-        mostrarPaises();
+      const pais = paisInput.value.trim();
+      const capital = capitalInput.value.trim();
+      const poblacion = poblacionInput.value.trim();
+      
+      if (pais !== '' && capital !== '' && poblacion !== '') {
+        // Agregar país al localStorage
+        agregarpais(pais, capital,poblacion);
+        // Limpiar campos del formulario
+        paisInput.value = '';
+        capitalInput.value = '';
+        poblacionInput.value = '';
+      } else {
+        alert('Por favor ingresa un país y su capital.');
+      }
     });
 
-    function cargarPaises() {
-        let paises = JSON.parse(localStorage.getItem('paises')) || [];
-        paises.forEach(function(pais) {
-            agregarPaisLista(pais);
-        });
+  
+    function agregarpais(pais, capital,poblacion) {
+      const paises = JSON.parse(localStorage.getItem('paises')) || [];
+      paises.push({ pais, capital,poblacion });
+      localStorage.setItem('paises', JSON.stringify(paises));
+      cargarpais();
     }
-
-    function guardarPais(pais) {
-        let paises = JSON.parse(localStorage.getItem('paises')) || [];
-        paises.push(pais);
-        localStorage.setItem('paises', JSON.stringify(paises));
-    }
-
-    function mostrarPaises() {
-        listaPaises.innerHTML = ''; // Limpiar la lista antes de volver a agregar los países
-        cargarPaises(); // Recargar la lista de países
-    }
-
-    function agregarPaisLista(pais) {
+  
+    function cargarpais() {
+      const paises = JSON.parse(localStorage.getItem('paises')) || [];
+      paislista.innerHTML = '';
+      paises.forEach(pais => {
+        
         const li = document.createElement('li');
-        li.innerHTML = `<strong>${pais.nombre}</strong> - Capital: ${pais.capital}, Población: ${pais.poblacion}`;
-        listaPaises.appendChild(li);
+        li.textContent = `Pais: ${pais.pais} - Capital : ${pais.capital} ---Poblacion: ${pais.poblacion}`;
+        paislista.appendChild(li);
+        
+      });
     }
-});
+  });
