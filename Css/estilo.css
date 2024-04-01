@@ -1,14 +1,31 @@
+body{
+  background-color: #1D9A23
+}
 .container {
   max-width: 800px;
   margin: 0 auto;
+  background-color: #08C98F
 }
 
 h1 {
   text-align: center;
+  text-decoration: underline;
+}
+#buscadorpais{
+  width: 250px;
+  height: 20px;
+  border-radius: 5px;
+}
+h2{
+  text-decoration: underline;
 }
 
 form {
   margin-bottom: 20px;
+  
+}
+p{
+  font-weight: bold;
 }
 
 #info-pais, #paisaje, #comentarios {
@@ -24,11 +41,19 @@ textarea {
   width: 100%;
   height: 100px;
   margin-bottom: 10px;
+  font-size: 17px;
+  border-radius: 5px;
+  border: solid 2px;
 }
 
 button {
   display: block;
   margin: 10px auto;
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 15px ;
+  font-weight: bold;
 }
 
 ul {
@@ -37,5 +62,6 @@ ul {
 }
 
 li {
+  font-size: 20px;
   margin-bottom: 10px;
 }
