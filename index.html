@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Países y Capitales</title>
-    <link rel="stylesheet" href="Css/estilo.css" />
-  </head>
-  <body>
-    <h1>Cargando Paises</h1>
-    <form id="pais-form">
-      <label for="pais">País:</label>
-      <input type="text" id="pais" required />
-      <label for="capital">Capital:</label>
-      <input type="text" id="capital" required />
-      <label for="poblacion">Poblacion:</label>
-      <input type="text" id="poblacion" required />
-      <button type="submit">Agregar</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Países y Capitales</title>
+  <link rel="stylesheet" href="Css/estilo.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Simulador de Datos de Países</h1>
+    <form id="buscadorform">
+      <input type="text" id="buscadorpais" placeholder="Buscar país...">
+      <button type="submit">Buscar</button>
     </form>
-    
-    <ul id="paises-lista"></ul>
-  </body>
+    <div id="paisdetalles">
+      <div id="info-pais">
+        <h2>Información del País</h2>
+        <img id="bandera" src="" alt="Bandera">
+        <p id="nombre-pais"></p>
+        <p id="capital-pais"></p>
+      </div>
+      <div id="paisaje">
+        <h2>Imagen del Paisaje</h2>
+        <img id="paisaje-img" src="" alt="Paisaje">
+      </div>
+      <div id="comentarios">
+        <h2>Comentarios</h2>
+        <textarea id="ent-comentario" placeholder="Escribe tu comentario..."></textarea>
+        <button id="agrega-coment">Agregar Comentario</button>
+        <ul id="listacomentarios"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/scrypt.js"></script>
-  
+
+</body>
+
 </html>
